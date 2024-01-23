@@ -1,0 +1,13 @@
+.Notifications{
+    background-color: lightpink;
+    grid-area: notification;
+}
+
+.Notifications-container{
+    display: flex;
+}
+
+.Flag-container{
+    display: flex;
+    justify-content: space-around;
+}

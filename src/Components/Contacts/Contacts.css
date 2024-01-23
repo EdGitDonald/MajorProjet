@@ -1,0 +1,8 @@
+.Contacts{
+    background-color: lightgreen;
+    grid-area: contacts;
+}
+
+.Contacts-container{
+  display: flex; 
+}

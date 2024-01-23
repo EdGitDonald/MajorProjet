@@ -1,26 +1,22 @@
 import React from 'react'
 import './Homepage.css'
 import Header from '../../Components/Header/Header'
+import Tasktracker from '../../Components/Tasktracker/Tasktracker'
+import Notifications from '../../Components/Notifications/Notifications'
+import Calendar from '../../Components/Calendar/Calendar'
+import Contacts from '../../Components/Contacts/Contacts'
 
 function Homepage() {
   return (
+    <>
+    <Header />
     <div className='Homepage-container'>
-        <Header />
-        <div className='Contacts'>
-            <p>Contacts</p>
-        </div>
-        <div className='Notifications'>
-            <p>Notifications</p>
-        </div>
-        <div className='Calendar'>
-            <p>Calendar</p>
-        </div>
-        <div className='Task-tracker'>
-            <p>Task Tracker</p>
-        </div>
-
-
+       <Contacts />
+       <Notifications />
+       <Calendar />
+       <Tasktracker />
     </div>
+    </>
   )
 }
 

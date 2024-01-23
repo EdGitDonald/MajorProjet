@@ -3,7 +3,13 @@ import './Header.css'
 
 function Header() {
   return (
-    <div className='Header'>Header</div>
+    <div className='Header'>
+        <p>InFlow</p>
+        <nav>
+            <p>Sign In</p>
+    
+        </nav> 
+    </div>
   )
 }
 

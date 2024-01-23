@@ -1,0 +1,8 @@
+.Tasktracker{
+    background-color: lightgrey;
+    grid-area: tasktracker;
+}
+
+.Tasktracker-container{
+    display: flex;
+}

@@ -3,30 +3,10 @@
     display: grid;
     gap: 5px;
     grid-template-areas: 
-    'header header header'
     'tasktracker notification notification'
     'tasktracker calendar contacts'
     'tasktracker calendar contacts'
     ;
     height: 500px;
-}
-
-.Contacts{
-    background-color: lightgreen;
-    grid-area: contacts;
-}
-
-.Notifications{
-    background-color: lightpink;
-    grid-area: notification;
-}
-
-.Calendar{
-    background-color: lightyellow;
-    grid-area: calendar;
-}
-
-.Task-tracker{
-    background-color: lightgrey;
-    grid-area: tasktracker;
+    border: solid 1px blue;
 }

@@ -1,0 +1,16 @@
+.Calendar{
+    background-color: lightyellow;
+    grid-area: calendar;
+}
+
+.Week-container{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px blue;
+    height: 90%;
+}
+
+.Day{
+    border: solid red 1px;
+    height: 100%;
+}
