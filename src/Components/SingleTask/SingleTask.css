@@ -24,3 +24,19 @@
   .step {
     /* Add your styles for the steps */
   }
+
+  .toggle-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .collapsed-steps {
+    /* Add your styles for the collapsed steps section */
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
