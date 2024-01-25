@@ -1,19 +1,10 @@
 import React, { useState } from 'react'
 import './Taskcard.css'
 
-function Taskcard() {
-    // progress and setprogress state max progress at 100 and when progress increases by number 
-  const [progress, setProgress] = useState(0);
-  const handleButtonClick = () => {
-    if (progress < 100){
-        setProgress(progress + 10);
-        // change number for progression increase
-    }
-  }
-
-  const handleButtonReset = () => {
-    setProgress(0);
-  };
+function Taskcard({ steps, onCheckboxClick }) {
+    const totalSteps = steps.length;
+    const completedSteps = steps.filter(step => step.completed).length;
+    const progress = totalSteps > 0 ? (completedSteps / totalSteps) * 100 : 0;
 
   const getColor = () => {
     if(progress < 40){
@@ -25,21 +16,32 @@ function Taskcard() {
     }
   };
 
-  return (
-   <div className='task-container'>
-    <div className='progress-bar'>
-        <div className='progress-bar-fill' style={{ width : `${progress}%`, backgroundColor: getColor()}}>
-        {" "}
-        </div>
-    </div>
-    <div className='progress-label'>{progress}%</div>
-    <button onClick={handleButtonClick} className='progress-button'>Progress</button>
-    {/*Progresses bar in 20% stages till 100% use button below to reset, Handle is located above the return*/}
-    <button onClick={handleButtonReset} className='progress-button'>Reset</button>
-    
+  const [formData, setFormData] = useState({
+    title:"",
+    step1: "",
+    step2: "",
+    step3: "",  
+  })
 
-   </div>
-  )
+  return (
+    <form>
+        <h2>Add Task</h2>
+    <div className='task-container'>
+      <div className='progress-bar'>
+          <div className='progress-bar-fill' style={{ width: `${progress}%`, backgroundColor: getColor() }}></div>
+      </div>
+          <div className='progress-label'>{Math.round(progress)}%</div>
+
+            {/* Render tasks and checkboxes */}
+            {steps.map((step, index) => (
+          <div key={index}>
+            <input type="checkbox" checked={step.completed} onChange={() => onCheckboxClick(index)} />
+            <span>{step.taskName}</span>
+          </div>
+          ))}
+    </div>
+    </form>
+  );
 }
 
 export default Taskcard

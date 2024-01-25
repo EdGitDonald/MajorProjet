@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Homepage.css'
 import Header from '../../Components/Header/Header'
 import Tasktracker from '../../Components/Tasktracker/Tasktracker'
@@ -7,6 +7,7 @@ import Calendar from '../../Components/Calendar/Calendar'
 import Contacts from '../../Components/Contacts/Contacts'
 
 function Homepage() {
+
   return (
     <>
     <Header />
@@ -14,7 +15,7 @@ function Homepage() {
        <Contacts />
        <Notifications />
        <Calendar />
-       <Tasktracker />
+       <Tasktracker/>
     </div>
     </>
   )
