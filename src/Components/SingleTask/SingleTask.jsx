@@ -71,3 +71,8 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
 }
 
 export default SingleTask;
+
+
+
+
+

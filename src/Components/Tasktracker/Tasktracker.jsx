@@ -29,6 +29,14 @@ function Tasktracker() {
     setSteps((prevSteps) => prevSteps.filter((_, i) => i !== index));
   };
 
+  const handleCheckboxClick = (index) => {
+    setSteps((prevSteps) => {
+      const updatedSteps = [...prevSteps];
+      updatedSteps[index] = { ...updatedSteps[index], completed: !updatedSteps[index].completed };
+      return updatedSteps;
+    });
+  };
+
   const handleSubmit = () => {
     const newTask = {
       title: newTaskTitle,
@@ -134,6 +142,7 @@ function Tasktracker() {
 }
 
 export default Tasktracker;
+
 
 
 
