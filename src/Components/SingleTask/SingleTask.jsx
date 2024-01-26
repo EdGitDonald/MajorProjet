@@ -45,6 +45,12 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
     <div className="single-task">
       <h3>{task.title}</h3>
 
+        {/* Display Assigned By and Due Date */}
+        <div className="task-details">
+        <p><strong>Assigned By:</strong> {task.assignedBy}</p>
+        <p><strong>Due Date:</strong> {task.dueDate}</p>
+      </div>
+
       {/* Progress bar */}
       <div className="progress-bar">
         <div className="progress-bar-fill" style={{ width: `${progress}%`, backgroundColor: getColor(progress) }}></div>

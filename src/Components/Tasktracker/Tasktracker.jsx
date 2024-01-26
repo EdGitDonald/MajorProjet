@@ -6,6 +6,8 @@ import SingleTask from '../SingleTask/SingleTask';
 function Tasktracker() {
   const [isOpen, setIsOpen] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [assignedBy, setAssignedBy] = useState('');
+  const [dueDate, setDueDate] = useState(''); 
   const [steps, setSteps] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -13,6 +15,8 @@ function Tasktracker() {
   const openModal = () => {
     setIsOpen(true);
     setNewTaskTitle('');
+    setAssignedBy('');
+    setDueDate('');
     setSteps([]);
     setProgress(0);
   };
@@ -29,19 +33,21 @@ function Tasktracker() {
     setSteps((prevSteps) => prevSteps.filter((_, i) => i !== index));
   };
 
-  const handleCheckboxClick = (index) => {
+  /* const handleCheckboxClick = (index) => {
     setSteps((prevSteps) => {
       const updatedSteps = [...prevSteps];
       updatedSteps[index] = { ...updatedSteps[index], completed: !updatedSteps[index].completed };
       return updatedSteps;
     });
-  };
+  }; */
 
   const handleSubmit = () => {
     const newTask = {
-      title: newTaskTitle,
-      steps: [...steps],
-      progress: progress,
+        title: newTaskTitle,
+        assignedBy: assignedBy,
+        dueDate: dueDate,
+        steps: [...steps],
+        progress: progress,
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
     closeModal();
@@ -107,6 +113,24 @@ function Tasktracker() {
                 onChange={(e) => setNewTaskTitle(e.target.value)}
                 placeholder="Add Title"
               />
+            </div>
+            <div>
+            <input
+              type="text"
+              name="assignedBy"
+              value={assignedBy}
+              onChange={(e) => setAssignedBy(e.target.value)}
+              placeholder="Assigned By"
+            />
+            </div>
+            <div>
+            <input
+              type="text"
+              name="dueDate"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              placeholder="Due Date"
+            />
             </div>
             <div className='progress-bar'>
               <div className='progress-bar-fill' style={{ width: `${progress}%` }}></div>
