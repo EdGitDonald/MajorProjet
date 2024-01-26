@@ -12,12 +12,12 @@ function Homepage() {
     <>
     <Header />
     <div className='Homepage-container'>
-       <Contacts />
-       <Notifications />
-       <Calendar />
-       <Tasktracker/>
+        <Contacts />
+        <Notifications />
+        <Calendar />
+        <Tasktracker />
     </div>
-    </>
+  </>
   )
 }
 
