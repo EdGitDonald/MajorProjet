@@ -1,8 +1,39 @@
-.Contacts{
+
+.Contacts {
     background-color: lightgreen;
     grid-area: contacts;
-}
-
-.Contacts-container{
-  display: flex; 
-}
+    border: 1px solid black;
+    max-width:max-content;
+  }
+  
+  .Contacts-container {
+    display: flex;
+    overflow-x: auto;  /* Add this line to enable horizontal scrolling */
+    max-width: 100%;   /* Set maximum width as 100% */
+  }
+  
+  .Contacts-list {
+    border: 1px solid blue;
+    white-space: nowrap;  /* Add this line to keep contacts in a single row */
+    overflow-x: auto;  /* Add this line to enable horizontal scrolling */
+    display: flex;
+  }
+  
+  .Contact {
+    border: 1px solid red;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;  /* Adjust margin as needed to separate contacts */
+  }
+  
+  .Contact img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 5px;  /* Adjust margin as needed */
+  }
+  
+  .Search-bar {
+    margin-bottom: 10px;
+  }

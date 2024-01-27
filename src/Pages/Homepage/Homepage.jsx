@@ -9,15 +9,15 @@ import Contacts from '../../Components/Contacts/Contacts'
 function Homepage() {
 
   return (
-    <>
-    <Header />
     <div className='Homepage-container'>
+    <Header />
+    <div className='Homepage-display'>
         <Contacts />
         <Notifications />
         <Calendar />
         <Tasktracker />
     </div>
-  </>
+  </div>
   )
 }
 

@@ -1,4 +1,9 @@
-.Homepage-container{
+.Homepage-container {
+    max-width: 600px; /* Set your desired maximum width */
+    margin: 0 auto;    /* Center the container on the page */
+  }
+
+.Homepage-display{
     background-color: lightblue;
     display: grid;
     gap: 5px;

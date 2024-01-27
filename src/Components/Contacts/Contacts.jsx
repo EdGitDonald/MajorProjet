@@ -8,6 +8,7 @@ function Contacts() {
   const [newContactEmail, setNewContactEmail] = useState('');
   const [newContactImage, setNewContactImage] = useState('');
   const [contacts, setContacts] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const openModal = () => {
     setIsOpen(true);
@@ -33,10 +34,27 @@ function Contacts() {
     closeModal();
   };
 
+  const handleRemoveContact = (index) => {
+    setContacts((prevContacts) => prevContacts.filter((_, i) => i !== index));
+  };
+
+  // Filter contacts based on the search input
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
   return (
     <div className='Contacts'>
       <div className='Contacts-container'>
         <h2>Contacts</h2>
+        <div className='Search-bar'>
+          <input
+            type='text'
+            placeholder='Search contacts...'
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+        </div>
         <button onClick={openModal}>Add Contact</button>
       </div>
 
@@ -63,7 +81,7 @@ function Contacts() {
         }}
       >
         <div>
-          <button className="modal-close-btn" onClick={closeModal}>
+          <button className='modal-close-btn' onClick={closeModal}>
             Close
           </button>
 
@@ -72,32 +90,32 @@ function Contacts() {
             <div>
               <h2>Add Contact</h2>
               <input
-                type="text"
-                name="name"
+                type='text'
+                name='name'
                 value={newContactName}
                 onChange={(e) => setNewContactName(e.target.value)}
-                placeholder="Name"
+                placeholder='Name'
               />
             </div>
             <div>
               <input
-                type="email"
-                name="email"
+                type='email'
+                name='email'
                 value={newContactEmail}
                 onChange={(e) => setNewContactEmail(e.target.value)}
-                placeholder="Email"
+                placeholder='Email'
               />
             </div>
             <div>
               <input
-                type="text"
-                name="image"
+                type='text'
+                name='image'
                 value={newContactImage}
                 onChange={(e) => setNewContactImage(e.target.value)}
-                placeholder="Image URL (optional)"
+                placeholder='Image URL (optional)'
               />
             </div>
-            <button type="button" onClick={handleAddContact}>
+            <button type='button' onClick={handleAddContact}>
               Add Contact
             </button>
           </form>
@@ -106,12 +124,16 @@ function Contacts() {
 
       {/* Display the list of contacts */}
       <div className='Contacts-list'>
-        {contacts.map((contact, index) => (
+        {filteredContacts.map((contact, index) => (
           <div className='Contact' key={index}>
             <img src={contact.image} alt={`${contact.name} avatar`} />
             <div>
               <p>{contact.name}</p>
             </div>
+            <button>Msg</button>
+            <button>Voice memo</button>
+            <button>Camera</button>
+            <button onClick={() => handleRemoveContact(index)}>Remove</button>
           </div>
         ))}
       </div>
@@ -120,3 +142,5 @@ function Contacts() {
 }
 
 export default Contacts;
+
+
