@@ -11,6 +11,7 @@ function Contacts({ updateDraftedMessages }) {
   const [newContactImage, setNewContactImage] = useState('');
   const [contacts, setContacts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [selectedUrgency, setSelectedUrgency] = useState('red');
 
   // New state variables for handling messages
   const [isMessageModalOpen, setMessageModalOpen] = useState(false);
@@ -57,19 +58,21 @@ function Contacts({ updateDraftedMessages }) {
   const handleSendMessage = () => {
     if (currentContact) {
       // For now, let's just add the drafted message to Notifications
-      console.log('Sending Message:', draftedMessage);
-
+      console.log('Sending Message:', draftedMessage, 'with urgency:', selectedUrgency);
+  
       // Close the message modal after sending the message
       closeMessageModal();
-
+  
       // Update drafted messages in the parent component
       updateDraftedMessages({
         contact: currentContact,
         message: draftedMessage,
+        urgency: selectedUrgency,
       });
-
-      // Clear drafted message state
+  
+      // Clear drafted message state and selected urgency
       setDraftedMessage('');
+      setSelectedUrgency('red'); // Set the default urgency or any preferred default
     }
   };
 
@@ -134,14 +137,26 @@ function Contacts({ updateDraftedMessages }) {
 
           {/* Form for sending a new message */}
           <form>
-            <div>
-              <h2>Send Message</h2>
-              <textarea
-                name='message'
-                value={draftedMessage}
-                onChange={(e) => setDraftedMessage(e.target.value)}
-                placeholder='Type your message...'
-              />
+          <div>
+  <h2>Send Message</h2>
+  <textarea
+    name='message'
+    value={draftedMessage}
+    onChange={(e) => setDraftedMessage(e.target.value)}
+    placeholder='Type your message...'
+  />
+        <div>
+            <label htmlFor='urgency'>Select Urgency:</label>
+               <select
+                  id='urgency'
+                  value={selectedUrgency}
+                  onChange={(e) => setSelectedUrgency(e.target.value)}
+                  >
+                  <option value='red'>Red</option>
+                  <option value='yellow'>Yellow</option>
+                  <option value='green'>Green</option>
+                </select>
+              </div>
             </div>
             <button type='button' onClick={handleSendMessage}>
               Send Message
@@ -149,7 +164,6 @@ function Contacts({ updateDraftedMessages }) {
           </form>
         </div>
       </Modal>
-
       {/* Display the list of contacts */}
       <ContactList
         contacts={filteredContacts}

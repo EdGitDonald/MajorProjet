@@ -27,6 +27,7 @@ function Notifications({ draftedMessages, removeNotification }) {
             <li key={index}>
               <p>Contact: {message.contact.name}</p>
               <p>Message: {message.message}</p>
+              <p>Urgency: {message.urgency}</p>
               <button onClick={() => handleRemoveNotification(index)}>
                 Remove
               </button>
