@@ -3,9 +3,8 @@ import './App.css'
 import Homepage from './Pages/Homepage/Homepage'
 
 
-function App() {
-  
 
+function App() {
   return (
     <div>
     <Homepage />

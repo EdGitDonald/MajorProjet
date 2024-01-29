@@ -1,19 +1,21 @@
 .Homepage-container {
+    border: 1px solid purple;
     max-width: 600px; /* Set your desired maximum width */
     margin: 0 auto;    /* Center the container on the page */
   }
 
 .Homepage-display{
     background-color: lightblue;
+    max-width: 100%;
     display: grid;
-    gap: 5px;
     grid-template-areas: 
     'tasktracker notification notification'
     'tasktracker calendar contacts'
     'tasktracker calendar contacts'
-    ;
+    ; 
     height: 500px;
     border: solid 1px blue;
 }
+
 
 

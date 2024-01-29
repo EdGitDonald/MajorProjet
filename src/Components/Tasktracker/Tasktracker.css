@@ -1,7 +1,10 @@
 /* Add the following styles to your existing CSS */
+
+
 .tasktracker{
     background-color: #2ecc71;
-    height: px;
+    width: 200px;
+    height: 200px;
 }
 
 

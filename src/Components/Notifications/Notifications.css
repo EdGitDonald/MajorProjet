@@ -1,6 +1,8 @@
 .Notifications{
     background-color: lightpink;
     grid-area: notification;
+    width: 350px;
+
 }
 
 .Notifications-container{
@@ -10,4 +12,9 @@
 .Flag-container{
     display: flex;
     justify-content: space-around;
+}
+
+.Drafted-messages{
+    border: solid 1px red;
+    height: 100px;
 }
