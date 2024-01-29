@@ -18,3 +18,35 @@
     border: solid 1px red;
     height: 100px;
 }
+
+.Flag-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .Drafted-messages {
+    border: solid 1px red;
+    height: 100px;
+    overflow-y: auto; /* Enable vertical scroll if messages exceed container height */
+  }
+  
+  /* Style for each urgency */
+  .Drafted-messages li {
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  
+  /* Red urgency style */
+  .Drafted-messages li.urgent-red {
+    background-color: red;
+  }
+  
+  /* Yellow urgency style */
+  .Drafted-messages li.urgent-yellow {
+    background-color: yellow;
+  }
+  
+  /* Green urgency style */
+  .Drafted-messages li.urgent-green {
+    background-color: green;
+  }

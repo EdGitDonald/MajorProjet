@@ -24,7 +24,10 @@ function Notifications({ draftedMessages, removeNotification }) {
         <h3>Drafted Messages</h3>
         <ul>
           {draftedMessages.map((message, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              className={`urgent-${message.urgency}`}
+            >
               <p>Contact: {message.contact.name}</p>
               <p>Message: {message.message}</p>
               <p>Urgency: {message.urgency}</p>
