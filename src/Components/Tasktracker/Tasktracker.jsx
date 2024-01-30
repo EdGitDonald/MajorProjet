@@ -3,7 +3,7 @@ import './Tasktracker.css';
 import Modal from 'react-modal';
 import SingleTask from '../SingleTask/SingleTask';
 
-function Tasktracker() {
+function Tasktracker({onDueDateSelect}) {
   const [isOpen, setIsOpen] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [assignedBy, setAssignedBy] = useState('');
@@ -11,6 +11,7 @@ function Tasktracker() {
   const [steps, setSteps] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [selectedDueDate, setSelectedDueDate] = useState('');
 
   const openModal = () => {
     setIsOpen(true);
@@ -42,14 +43,24 @@ function Tasktracker() {
   }; */
 
   const handleSubmit = () => {
-    const newTask = {
+      // Set new task title and due date in state
+      setNewTaskTitle(newTaskTitle); // Assuming newTaskTitle is a state variable
+      setSelectedDueDate(dueDate); // Assuming dueDate is a state variable
+  
+      const newTask = {
         title: newTaskTitle,
         assignedBy: assignedBy,
         dueDate: dueDate,
         steps: [...steps],
         progress: progress,
     };
+      // Add the new task to the tasks array
     setTasks((prevTasks) => [...prevTasks, newTask]);
+      // Pass the newTaskTitle to the Calendar component
+    onDueDateSelect(dueDate, newTaskTitle);
+    // Clear the newTaskTitle after submitting
+    setNewTaskTitle(''); 
+    // Close the modal or perform other necessary actions
     closeModal();
   };
 
@@ -66,16 +77,16 @@ function Tasktracker() {
 
       {/* Render the list of submitted tasks */}
       <div className="tasktracker-task">
-        {tasks.map((task, index) => (
-          <SingleTask
-            key={index}
-            task={task}
-            onRemove={removeTask}
-            onCheckboxClick={(updatedTask) => setTasks((prevTasks) => prevTasks.map((t) => (t === task ? updatedTask : t)))}
-          />
-        ))}
+      {tasks.map((task, index) => (
+      <SingleTask
+        key={index}
+        task={task}
+        onRemove={removeTask}
+        onCheckboxClick={(updatedTask) => setTasks((prevTasks) => prevTasks.map((t) => (t === task ? updatedTask : t)))}
+        onDateSelect={(selectedDate, selectedDueDate, task) => onDueDateSelect(selectedDate, selectedDueDate, task)}
+     />
+     ))}
       </div>
-
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}

@@ -19,6 +19,8 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
       const updatedProgress = totalSteps > 0 ? (completedSteps / totalSteps) * 100 : 0;
 
       const updatedTask = { ...task, steps: updatedSteps };
+      // Pass task.title to the parent component
+      onCheckboxClick({ ...task, title: task.title });
 
       // Notify the parent (Tasktracker) to update the task in the tasks array
       onCheckboxClick(updatedTask);
