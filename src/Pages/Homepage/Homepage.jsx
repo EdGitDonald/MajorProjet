@@ -1,3 +1,4 @@
+// Homepage.jsx
 import React, { useState } from 'react';
 import './Homepage.css';
 import Header from '../../Components/Header/Header';
@@ -10,7 +11,8 @@ function Homepage() {
   const [draftedMessages, setDraftedMessages] = useState([]);
   const [selectedDueDate, setSelectedDueDate] = useState('');
   const [currentTask, setCurrentTask] = useState(null);
-  const [newTaskTitle, setNewTaskTitle] = useState(''); 
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [taskTitlesByDate, setTaskTitlesByDate] = useState({});
 
   const updateDraftedMessages = (message) => {
     console.log('Received drafted message:', message);
@@ -24,35 +26,46 @@ function Homepage() {
     ]);
   };
 
-    // Define onDateSelect function
-    const onDateSelect = (date, dueDate, title) => {
-        // Handle the date selection logic
-        console.log('Selected date:', date);
-        console.log('Due date:', dueDate);
-        console.log('Task title:', newTaskTitle);
-        // Add your logic here
-      };
+  const onDateSelect = (date, dueDate, taskTitle) => {
+    console.log('Selected date:', date);
+    console.log('Due date:', dueDate);
+    console.log('Task title:', taskTitle);
 
-      return (
-        <div className='Homepage-container'>
-          <Header />
-          <div className='Homepage-display'>
-            <Tasktracker onDueDateSelect={(date, title, task) => {
-              setSelectedDueDate(date);
-              setCurrentTask(task);
-              setNewTaskTitle(newTaskTitle); // Pass the title to newTaskTitle
-            }} />
-            <Calendar 
-            selectedDueDate={selectedDueDate} 
-            onDateSelect={onDateSelect} 
-            task={currentTask} 
-            newTaskTitle={newTaskTitle} 
-            />
-            <Contacts updateDraftedMessages={updateDraftedMessages} />
-            <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} />
-          </div>
-        </div>
-      );
-    }
+    setTaskTitlesByDate((prevTitles) => ({
+      ...prevTitles,
+      [dueDate]: [...(prevTitles[dueDate] || []), taskTitle],
+    }));
+  };
+
+  return (
+    <div className='Homepage-container'>
+      <Header />
+      <div className='Homepage-display'>
+        <Tasktracker
+          onDueDateSelect={(date, title, task) => {
+            setSelectedDueDate(date);
+            setCurrentTask(task);
+            setNewTaskTitle(title);
+            setTaskTitlesByDate((prevTitles) => ({
+              ...prevTitles,
+              [date]: title,
+            }));
+          }}
+        />
+        <Calendar
+          selectedDueDate={selectedDueDate}
+          onDateSelect={onDateSelect}
+          task={currentTask}
+          newTaskTitle={newTaskTitle}
+          taskTitlesByDate={taskTitlesByDate}
+        />
+        <Contacts updateDraftedMessages={updateDraftedMessages} />
+        <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} />
+      </div>
+    </div>
+  );
+}
 
 export default Homepage;
+
+

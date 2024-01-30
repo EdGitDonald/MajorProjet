@@ -1,6 +1,6 @@
-// Import necessary functions from date-fns
+// Calendar.jsx
 import React, { useState } from 'react';
-import { startOfWeek, addDays, subWeeks, addWeeks, format as formatDateFns, parse } from 'date-fns';
+import { startOfWeek, addDays, subWeeks, addWeeks, format as formatDateFns } from 'date-fns';
 import './Calendar.css';
 
 // Function to format the due date based on different formats
@@ -30,11 +30,10 @@ const formatDate = (dueDate, format) => {
   }
 };
 
-const Calendar = ({ selectedDueDate, onDateSelect, task }) => {
+const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDate }) => {
   const [currentWeek, setCurrentWeek] = useState(new Date());
 
-  const weekStart = startOfWeek(currentWeek, { weekStartsOn: 1 }); // Start on Monday (1)
-
+  const weekStart = startOfWeek(currentWeek, { weekStartsOn: 1 });
   const days = Array.from({ length: 5 }, (_, index) => addDays(weekStart, index));
 
   const goToPreviousWeek = () => {
@@ -46,25 +45,26 @@ const Calendar = ({ selectedDueDate, onDateSelect, task }) => {
   };
 
   return (
-    <div className="Calendar">
+    <div className='Calendar'>
       <h2>Calendar</h2>
-      <div className="Week-container">
+      <div className='Week-container'>
         <button onClick={goToPreviousWeek}>Previous Week</button>
         {days.map((day, index) => (
           <div
-            className="Day"
+            className='Day'
             key={index}
             onClick={() => {
               console.log('Clicked date:', day);
               console.log('Selected due date:', selectedDueDate);
-              console.log('Task title:', task?.title);
-              onDateSelect(day, selectedDueDate, task?.title); // Use optional chaining
+              console.log('Task title:', newTaskTitle);
+              console.log('Task title:', taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')]);
+              onDateSelect(day, selectedDueDate, newTaskTitle, taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')]);
             }}
           >
             <p>{formatDateFns(day, 'EEEE')}</p>
             <p>{formatDateFns(day, 'd')}</p>
-            {selectedDueDate && formatDate(selectedDueDate, 'yyyy-MM-dd') === formatDateFns(day, 'yyyy-MM-dd') && (
-              <span>{task?.title}</span>
+            {selectedDueDate && formatDateFns(selectedDueDate, 'yyyy-MM-dd') === formatDateFns(day, 'yyyy-MM-dd') && (
+              <span>{newTaskTitle || (taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')] || []).join(', ')}</span>
             )}
           </div>
         ))}
@@ -75,11 +75,3 @@ const Calendar = ({ selectedDueDate, onDateSelect, task }) => {
 };
 
 export default Calendar;
-
-
-
-
-
-
-
-

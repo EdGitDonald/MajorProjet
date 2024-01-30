@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+// Tasktracker.jsx
+import React, { useState } from 'react';
 import './Tasktracker.css';
 import Modal from 'react-modal';
 import SingleTask from '../SingleTask/SingleTask';
 
-function Tasktracker({onDueDateSelect}) {
+function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
   const [isOpen, setIsOpen] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [assignedBy, setAssignedBy] = useState('');
-  const [dueDate, setDueDate] = useState(''); 
+  const [dueDate, setDueDate] = useState('');
   const [steps, setSteps] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -34,33 +35,24 @@ function Tasktracker({onDueDateSelect}) {
     setSteps((prevSteps) => prevSteps.filter((_, i) => i !== index));
   };
 
-  /* const handleCheckboxClick = (index) => {
-    setSteps((prevSteps) => {
-      const updatedSteps = [...prevSteps];
-      updatedSteps[index] = { ...updatedSteps[index], completed: !updatedSteps[index].completed };
-      return updatedSteps;
-    });
-  }; */
-
   const handleSubmit = () => {
-      // Set new task title and due date in state
-      setNewTaskTitle(newTaskTitle); // Assuming newTaskTitle is a state variable
-      setSelectedDueDate(dueDate); // Assuming dueDate is a state variable
-  
-      const newTask = {
-        title: newTaskTitle,
-        assignedBy: assignedBy,
-        dueDate: dueDate,
-        steps: [...steps],
-        progress: progress,
+    setNewTaskTitle(newTaskTitle);
+    setSelectedDueDate(dueDate);
+
+    const newTask = {
+      title: newTaskTitle,
+      assignedBy: assignedBy,
+      dueDate: dueDate,
+      steps: [...steps],
+      progress: progress,
     };
-      // Add the new task to the tasks array
+
     setTasks((prevTasks) => [...prevTasks, newTask]);
-      // Pass the newTaskTitle to the Calendar component
-    onDueDateSelect(dueDate, newTaskTitle);
-    // Clear the newTaskTitle after submitting
-    setNewTaskTitle(''); 
-    // Close the modal or perform other necessary actions
+
+    setNewTaskTitle(newTaskTitle);
+    onDueDateSelect(dueDate, newTaskTitle, newTask);
+    console.log('Setting newTaskTitle:', newTaskTitle);
+
     closeModal();
   };
 
@@ -75,17 +67,18 @@ function Tasktracker({onDueDateSelect}) {
         <button onClick={openModal}>Add Task</button>
       </div>
 
-      {/* Render the list of submitted tasks */}
-      <div className="tasktracker-task">
-      {tasks.map((task, index) => (
-      <SingleTask
-        key={index}
-        task={task}
-        onRemove={removeTask}
-        onCheckboxClick={(updatedTask) => setTasks((prevTasks) => prevTasks.map((t) => (t === task ? updatedTask : t)))}
-        onDateSelect={(selectedDate, selectedDueDate, task) => onDueDateSelect(selectedDate, selectedDueDate, task)}
-     />
-     ))}
+      <div className='tasktracker-task'>
+        {tasks.map((task, index) => (
+          <SingleTask
+            key={index}
+            task={task}
+            onRemove={removeTask}
+            onCheckboxClick={(updatedTask) =>
+              setTasks((prevTasks) => prevTasks.map((t) => (t === task ? updatedTask : t)))
+            }
+            onDateSelect={(selectedDate, selectedDueDate, task) => onDueDateSelect(selectedDate, selectedDueDate, task)}
+          />
+        ))}
       </div>
       <Modal
         isOpen={isOpen}
@@ -109,39 +102,38 @@ function Tasktracker({onDueDateSelect}) {
         }}
       >
         <div>
-          <button className="modal-close-btn" onClick={closeModal}>
+          <button className='modal-close-btn' onClick={closeModal}>
             Close
           </button>
 
-          {/* Form for adding task in the modal */}
           <form>
             <div>
               <h2>Add Task</h2>
               <input
-                type="text"
-                name="title"
+                type='text'
+                name='title'
                 value={newTaskTitle}
                 onChange={(e) => setNewTaskTitle(e.target.value)}
-                placeholder="Add Title"
+                placeholder='Add Title'
               />
             </div>
             <div>
-            <input
-              type="text"
-              name="assignedBy"
-              value={assignedBy}
-              onChange={(e) => setAssignedBy(e.target.value)}
-              placeholder="Assigned By"
-            />
+              <input
+                type='text'
+                name='assignedBy'
+                value={assignedBy}
+                onChange={(e) => setAssignedBy(e.target.value)}
+                placeholder='Assigned By'
+              />
             </div>
             <div>
-            <input
-              type="text"
-              name="dueDate"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              placeholder="Due Date"
-            />
+              <input
+                type='text'
+                name='dueDate'
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                placeholder='Due Date'
+              />
             </div>
             <div className='progress-bar'>
               <div className='progress-bar-fill' style={{ width: `${progress}%` }}></div>
@@ -149,7 +141,7 @@ function Tasktracker({onDueDateSelect}) {
             {steps.map((step, index) => (
               <div className='step' key={index}>
                 <textarea
-                  name="step"
+                  name='step'
                   placeholder={`Step ${index + 1}`}
                   value={step.taskName}
                   onChange={(e) => {
@@ -158,7 +150,7 @@ function Tasktracker({onDueDateSelect}) {
                     setSteps(newSteps);
                   }}
                 />
-                <button type="button" onClick={() => handleRemoveStep(index)}>
+                <button type='button' onClick={() => handleRemoveStep(index)}>
                   Remove
                 </button>
               </div>
@@ -166,7 +158,7 @@ function Tasktracker({onDueDateSelect}) {
             <button type='button' onClick={handleAddStep}>
               Add step
             </button>
-            <button type="button" onClick={handleSubmit}>
+            <button type='button' onClick={handleSubmit}>
               Submit Task
             </button>
           </form>
@@ -177,6 +169,7 @@ function Tasktracker({onDueDateSelect}) {
 }
 
 export default Tasktracker;
+
 
 
 
