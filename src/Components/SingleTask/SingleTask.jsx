@@ -13,18 +13,16 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
     setProgress((prevProgress) => {
       const updatedSteps = [...task.steps];
       updatedSteps[index] = { ...updatedSteps[index], completed: !updatedSteps[index].completed };
-
+  
       const completedSteps = updatedSteps.filter((step) => step.completed).length;
       const totalSteps = updatedSteps.length;
       const updatedProgress = totalSteps > 0 ? (completedSteps / totalSteps) * 100 : 0;
-
-      const updatedTask = { ...task, steps: updatedSteps };
-      // Pass task.title to the parent component
-      onCheckboxClick({ ...task, title: task.title });
-
+  
+      const updatedTask = { ...task, steps: updatedSteps, progress: updatedProgress };
+      
       // Notify the parent (Tasktracker) to update the task in the tasks array
       onCheckboxClick(updatedTask);
-
+  
       return updatedProgress;
     });
   };

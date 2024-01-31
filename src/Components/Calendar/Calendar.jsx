@@ -1,4 +1,3 @@
-// Calendar.jsx
 import React, { useState } from 'react';
 import { startOfWeek, addDays, subWeeks, addWeeks, format as formatDateFns } from 'date-fns';
 import './Calendar.css';
@@ -57,15 +56,22 @@ const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDat
               console.log('Clicked date:', day);
               console.log('Selected due date:', selectedDueDate);
               console.log('Task title:', newTaskTitle);
-              console.log('Task title:', taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')]);
+              console.log('Task titles:', taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')]);
               onDateSelect(day, selectedDueDate, newTaskTitle, taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')]);
             }}
           >
             <p>{formatDateFns(day, 'EEEE')}</p>
             <p>{formatDateFns(day, 'd')}</p>
-            {selectedDueDate && formatDateFns(selectedDueDate, 'yyyy-MM-dd') === formatDateFns(day, 'yyyy-MM-dd') && (
-              <span>{newTaskTitle || (taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')] || []).join(', ')}</span>
-            )}
+            {selectedDueDate &&
+              formatDateFns(selectedDueDate, 'yyyy-MM-dd') === formatDateFns(day, 'yyyy-MM-dd') && (
+                <div>
+                  {taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')] &&
+                    taskTitlesByDate[formatDate(day, 'yyyy-MM-dd')].map((taskTitle, taskIndex) => (
+                      <span key={taskIndex}>{taskTitle}</span>
+                    ))}
+                  {newTaskTitle && <span>{newTaskTitle}</span>}
+                </div>
+              )}
           </div>
         ))}
         <button onClick={goToNextWeek}>Next Week</button>
