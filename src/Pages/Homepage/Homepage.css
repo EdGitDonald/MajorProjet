@@ -7,12 +7,13 @@
 .Homepage-display{
     background-color: lightblue;
     max-width: 100%;
-    display: grid;
+    display: flex;
+    /* display: grid;
     grid-template-areas: 
-    'tasktracker notification notification'
+    'tasktracker calendar notification'
     'tasktracker calendar contacts'
     'tasktracker calendar contacts'
-    ; 
+    ; */
     height: 500px;
     border: solid 1px blue;
 }
