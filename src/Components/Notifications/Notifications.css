@@ -1,12 +1,13 @@
 .Notifications{
     background-color: lightpink;
     grid-area: notification;
-    width: 350px;
+    width: 200px;
 
 }
 
 .Notifications-container{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .Flag-container{
