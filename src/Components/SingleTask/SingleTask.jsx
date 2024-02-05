@@ -43,13 +43,15 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
 
   return (
     <div className="single-task">
+    <div className='task-title'>
+    {/* Display Assigned By */}
+      <p><strong>Due:</strong> {task.dueDate}</p>
+      <p><strong>Assigned:</strong> {task.assignedBy}</p>
       <h3>{task.title}</h3>
+    </div>
 
-        {/* Display Assigned By and Due Date */}
-        <div className="task-details">
-        <p><strong>Assigned By:</strong> {task.assignedBy}</p>
-        <p><strong>Due Date:</strong> {task.dueDate}</p>
-      </div>
+        {/* Display Assigned By */}
+    
 
       {/* Progress bar */}
       <div className="progress-bar">

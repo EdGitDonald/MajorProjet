@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { startOfWeek, addDays, subWeeks, addWeeks, format as formatDateFns } from 'date-fns';
+import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft } from "react-icons/fa6";
 import './Calendar.css';
 
 // Function to format the due date based on different formats
@@ -47,7 +49,7 @@ const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDat
     <div className='Calendar'>
       <h2>Calendar</h2>
       <div className='Week-container'>
-        <button onClick={goToPreviousWeek}>Previous Week</button>
+        <button onClick={goToPreviousWeek}><FaAngleLeft/></button>
         {days.map((day, index) => (
           <div
             className='Day'
@@ -74,7 +76,7 @@ const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDat
               )}
           </div>
         ))}
-        <button onClick={goToNextWeek}>Next Week</button>
+        <button onClick={goToNextWeek}><FaAngleRight/></button>
       </div>
     </div>
   );
