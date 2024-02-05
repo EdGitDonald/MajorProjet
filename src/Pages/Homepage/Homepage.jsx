@@ -39,7 +39,7 @@ function Homepage() {
 
   return (
     <div className='Homepage-container'>
-      <Header />
+    
       <div className='Homepage-display'>
         <Tasktracker
           onDueDateSelect={(date, title, task) => {
@@ -52,6 +52,9 @@ function Homepage() {
             }));
           }}
         />
+        <div className='Centre-container'>
+        <Header />
+        <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} />
         <Calendar
           selectedDueDate={selectedDueDate}
           onDateSelect={onDateSelect}
@@ -59,8 +62,10 @@ function Homepage() {
           newTaskTitle={newTaskTitle}
           taskTitlesByDate={taskTitlesByDate}
         />
+        
+        </div>
         <Contacts updateDraftedMessages={updateDraftedMessages} />
-        <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} />
+        
       </div>
     </div>
   );

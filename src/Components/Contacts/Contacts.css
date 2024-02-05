@@ -1,10 +1,9 @@
 
 .Contacts {
     background-color: lightgreen;
-    grid-area: contacts;
+    margin: 5px;
     border: 1px solid black;
-    width: 200px;
-    height: 300px;
+    width: 250px;
   }
   
   .Contacts-container {

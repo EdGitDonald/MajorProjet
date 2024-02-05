@@ -1,7 +1,7 @@
 .Notifications{
     background-color: lightpink;
-    grid-area: notification;
-    width: 200px;
+    height: 300px;
+    margin: 5px;
 
 }
 
