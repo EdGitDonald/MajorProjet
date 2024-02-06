@@ -5,7 +5,6 @@
 }
 .Header{
     grid-area: header;
-    border: 1px solid red;
     height: 50px;
     display: flex;
     justify-content: space-between;

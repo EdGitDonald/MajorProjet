@@ -1,10 +1,12 @@
 
 .Calendar{
-    background-color: #575757;
+    background-color: #e5e5e5;
+    box-shadow: 1px 1px 12px 1px #ababab;
     border-radius: 24px;
     Width: 500px;
     margin: 5px;
-    color: #ebebeb;
+    color: #176dd8;
+
 }
 
 .Calendar h2{
@@ -13,12 +15,10 @@
 
 .Week-container{
     display: flex;
-    border: solid 1px blue;
     height: 200px;   
 }
 
 .Day{
-    border: solid red 1px;
     height: 100%;
     width: 100%;
 }

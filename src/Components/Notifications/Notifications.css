@@ -1,5 +1,6 @@
 .Notifications{
-    background-color: #575757;
+    background-color: #e5e5e5;
+    box-shadow: 1px 1px 12px 1px #ababab;
     border-radius: 24px;
     height: 300px;
     margin: 5px;
@@ -18,7 +19,6 @@
 }
 
 .Drafted-messages{
-    border: solid 1px red;
     height: 100px;
     color: #ebebeb;
 }
@@ -29,7 +29,6 @@
   }
   
   .Drafted-messages {
-    border: solid 1px red;
     height: 150px;
     overflow-y: auto; /* Enable vertical scroll if messages exceed container height */
   }

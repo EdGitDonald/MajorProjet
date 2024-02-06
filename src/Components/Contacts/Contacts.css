@@ -1,9 +1,9 @@
 
 .Contacts {
-    background-color: #575757;
+    background-color: #e5e5e5;
+    box-shadow: 1px 1px 12px 1px #ababab;
     border-radius: 24px;
     margin: 5px;
-    border: 1px solid black;
     width: 250px;
   }
   
