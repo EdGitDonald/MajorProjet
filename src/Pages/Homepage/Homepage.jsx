@@ -26,15 +26,23 @@ function Homepage() {
     ]);
   };
 
-  const onDateSelect = (date, dueDate, taskTitle) => {
+  const onDateSelect = (date, selectedDueDate, newTaskTitle, taskTitles) => {
     console.log('Selected date:', date);
-    console.log('Due date:', dueDate);
-    console.log('Task title:', taskTitle);
-
+    console.log('Selected due date:', selectedDueDate);
+    console.log('New task title:', newTaskTitle);
+    console.log('Task titles:', taskTitles);
+    
+    // Update taskTitlesByDate with the new task title
+    const formattedDate = formatDate(date, 'yyyy-MM-dd');
     setTaskTitlesByDate((prevTitles) => ({
       ...prevTitles,
-      [dueDate]: [...(prevTitles[dueDate] || []), taskTitle],
+      [formattedDate]: [...(prevTitles[formattedDate] || []), newTaskTitle],
     }));
+    
+    // Update selectedDueDate and currentTask
+    setSelectedDueDate(selectedDueDate);
+    setCurrentTask(currentTask);
+    setNewTaskTitle(newTaskTitle);
   };
 
   return (
@@ -58,7 +66,6 @@ function Homepage() {
         <Calendar
           selectedDueDate={selectedDueDate}
           onDateSelect={onDateSelect}
-          task={currentTask}
           newTaskTitle={newTaskTitle}
           taskTitlesByDate={taskTitlesByDate}
         />
@@ -72,6 +79,3 @@ function Homepage() {
 }
 
 export default Homepage;
-
-
-

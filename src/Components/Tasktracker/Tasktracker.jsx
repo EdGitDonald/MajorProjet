@@ -169,12 +169,3 @@ function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
 }
 
 export default Tasktracker;
-
-
-
-
-
-
-
-
-
