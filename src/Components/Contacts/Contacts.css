@@ -16,28 +16,13 @@
   }
   
   .Contacts-list {
-    border: 1px solid blue;
+
     align-items: center;
     width: 150px;
     flex-wrap: wrap;
     white-space: nowrap;  /* Add this line to keep contacts in a single row */
     overflow-x: auto;  /* Add this line to enable horizontal scrolling */
     display: flex;
-  }
-  
-  .Contact {
-    border: 1px solid red;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;  /* Adjust margin as needed to separate contacts */
-  }
-  
-  .Contact img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-bottom: 5px;  /* Adjust margin as needed */
   }
   
   .Search-bar {

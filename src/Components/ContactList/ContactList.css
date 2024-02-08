@@ -1,1 +1,46 @@
+/* ContactList.css */
 
+.Contacts-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .Contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .default-icon {
+    font-size: 60px; /* Increase the size of the default icon */
+    color: #ccc; /* Set the color of the default icon */
+    margin-bottom: 10px; /* Add some space below the default icon */
+  }
+  
+  .Contact img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .Contact p {
+    margin-bottom: 5px;
+  }
+  
+  .Contact button {
+    margin-top: 5px;
+  }
+  
+  .Contact .button-row {
+    display: flex;
+  }
+  
+  .Contact .button-row button {
+    margin-right: 5px; /* Add some space between buttons */
+  }
+  
+  
