@@ -26,27 +26,5 @@
     overflow: scroll;
 }
 
-.single-task {
-    margin-bottom: 20px;
-  }
-  
-  .single-task input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  /* Adjust the step styles */
-  .single-task .step {
-    border: 1px solid blue;
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .single-task .step input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .single-task .step textarea {
-    margin-right: 5px;
-  }
+
   

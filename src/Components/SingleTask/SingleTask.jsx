@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './SingleTask.css'; // Import the CSS file
+import { MdDelete } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
 
 function SingleTask({ task, onRemove, onCheckboxClick }) {
   const [progress, setProgress] = useState(task.progress || 0);
@@ -32,26 +34,19 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
   };
 
   const getColor = (progress) => {
-    if (progress < 40) {
-      return "#ff0000";
-    } else if (progress < 70) {
-      return "#ffa500";
-    } else {
-      return "#2ecc71";
-    }
+    if (progress < 100) {
+      return "#3498db";
+    } 
   };
 
   return (
     <div className="single-task">
-    <div className='task-title'>
-    {/* Display Assigned By */}
-      <p><strong>Due:</strong> {task.dueDate}</p>
-      <p><strong>Assigned:</strong> {task.assignedBy}</p>
-      <h3>{task.title}</h3>
-    </div>
-
+      <div className='task-title'>
         {/* Display Assigned By */}
-    
+        <p><strong>Due:</strong> {task.dueDate}</p>
+        <p><strong>Assigned:</strong> {task.assignedBy}</p>
+        <h3>{task.title}</h3>
+      </div>
 
       {/* Progress bar */}
       <div className="progress-bar">
@@ -59,26 +54,31 @@ function SingleTask({ task, onRemove, onCheckboxClick }) {
       </div>
 
       {/* Toggle button for collapsing/expanding steps */}
-      <button onClick={toggleCollapse}>{isCollapsed ? 'Expand' : 'Collapse'}</button>
+      <button className="toggle-button" onClick={toggleCollapse}>{isCollapsed ? 'Expand' : 'Collapse'}</button>
 
       {/* Steps - render only if not collapsed */}
       {!isCollapsed && (
         <div>
           {task.steps.map((step, index) => (
             <div className="step" key={index}>
-              <input type="checkbox" checked={step.completed} onChange={() => handleCheckboxClick(index)} />
+              <label className="checkbox-container">
+                <input type="checkbox" checked={step.completed} onChange={() => handleCheckboxClick(index)} />
+                <span className="custom-checkbox"></span>
+              </label>
               <span>{step.taskName}</span>
             </div>
           ))}
         </div>
       )}
 
-      <button onClick={handleRemoveClick}>Remove Task</button>
+      <button onClick={handleRemoveClick}><MdDelete /></button>
     </div>
   );
 }
 
 export default SingleTask;
+
+
 
 
 

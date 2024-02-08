@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './Tasktracker.css';
 import Modal from 'react-modal';
 import SingleTask from '../SingleTask/SingleTask';
+import { MdAddTask } from "react-icons/md";
+
 
 function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +66,7 @@ function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
     <div className='tasktracker'>
       <div className='tasktracker-container'>
         <h2>Tasktracker</h2>
-        <button onClick={openModal}>Add Task</button>
+        <button onClick={openModal}><MdAddTask /></button>
       </div>
 
       <div className='tasktracker-task'>
