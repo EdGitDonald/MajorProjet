@@ -12,6 +12,12 @@
     align-items: center;
     margin: 10px;
     text-align: center;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    padding: 15px;
+    color: #333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .default-icon {
