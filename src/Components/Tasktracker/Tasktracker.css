@@ -2,9 +2,10 @@
 
 
 .tasktracker{
-    background-color: #e5e5e5;
-    box-shadow: 1px 1px 12px 1px #ababab;
-    border-radius: 24px;
+    background-color: rgba(229, 229, 229, 0.4);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     width: 250px;
     margin: 5px;
 }
@@ -16,7 +17,6 @@
 }
 
 .tasktracker-container h2{
-    color: #176dd8;
     margin-right: 5px;
 }
 
