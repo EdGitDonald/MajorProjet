@@ -13,6 +13,12 @@ function Homepage() {
   const [currentTask, setCurrentTask] = useState(null);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [taskTitlesByDate, setTaskTitlesByDate] = useState({});
+  const [urgencyFilter, setUrgencyFilter] = useState(null);
+
+  // Function to handle urgency filter change
+  const handleUrgencyFilterChange = (urgency) => {
+    setUrgencyFilter(urgency);
+  };
 
   const updateDraftedMessages = (message) => {
     console.log('Received drafted message:', message);
@@ -62,7 +68,7 @@ function Homepage() {
         />
         <div className='Centre-container'>
         <Header />
-        <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} />
+        <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} urgencyFilter={urgencyFilter} handleUrgencyFilterChange={handleUrgencyFilterChange} />
         <Calendar
           selectedDueDate={selectedDueDate}
           onDateSelect={onDateSelect}

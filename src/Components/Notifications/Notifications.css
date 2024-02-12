@@ -6,12 +6,14 @@
     height: 300px;
     margin: 5px;
     padding: 10px;
+    width: 500px;
 }
 
 .Notifications-container{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .Flag-container{
@@ -33,28 +35,55 @@
     height: 150px;
     overflow-y: auto; /* Enable vertical scroll if messages exceed container height */
   }
+
+  .Drafted-messages ul {
+    /* Add your styles for the unordered list */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
   
   /* Style for each urgency */
   .Drafted-messages li{
     border-radius: 16px;
     font-size: 11px;
-    padding: 10px;
-    margin: 5px;
-    width: 100px;
     height: 100px;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.33% - px); /* Adjust the width as needed */
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .Drafted-messages li p {
+    /* Add your styles for the paragraphs */
+    margin: 0;
+  }
+
+  .urgency-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .message-content {
+    flex: 1;
   }
   
   /* Red urgency style */
-  .Drafted-messages li.urgent-red {
+  .Drafted-messages .urgency-box.urgent-red {
     background-color: #b21f1a;
   }
   
   /* Yellow urgency style */
-  .Drafted-messages li.urgent-yellow {
+  .Drafted-messages .urgency-box.urgent-yellow {
     background-color: #ecd100;
   }
   
   /* Green urgency style */
-  .Drafted-messages li.urgent-green {
+  .Drafted-messages .urgency-box.urgent-green {
     background-color: #008f00;
   }
