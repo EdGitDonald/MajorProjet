@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TiDelete } from "react-icons/ti";
 import './Notifications.css';
 
 function Notifications({ draftedMessages, removeNotification, urgencyFilter, handleUrgencyFilterChange }) {
@@ -51,14 +52,14 @@ function Notifications({ draftedMessages, removeNotification, urgencyFilter, han
             .filter((message) => !urgencyFilter || message.urgency === urgencyFilter)
             .map((message, index) => (
               <li key={index} className={`urgent-${message.urgency}`}>
+                <div className='message-header'>
                 <div className="urgency-box" style={{ backgroundColor: getUrgencyColor(message.urgency) }}></div>
                 <button onClick={() => handleRemoveNotification(index)}>
-                  Remove
+                <TiDelete />
                 </button>
+                </div>
                 <div className="message-content">
-                  <p>From: {message.contact.name}</p>
-                  <p>Message: {message.message}</p>
-                  <p>Urgency: {message.urgency}</p>
+                  <p>From: {message.contact.name} : {message.message}</p>
                 </div>
               </li>
             ))}

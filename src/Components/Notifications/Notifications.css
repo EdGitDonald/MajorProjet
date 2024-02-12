@@ -57,6 +57,11 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  .message-header{
+    display: flex;
+    justify-content: space-between;
+  }
+
   .Drafted-messages li p {
     /* Add your styles for the paragraphs */
     margin: 0;
@@ -71,6 +76,10 @@
   
   .message-content {
     flex: 1;
+  }
+
+  .Drafted-messages li button{
+    
   }
   
   /* Red urgency style */
