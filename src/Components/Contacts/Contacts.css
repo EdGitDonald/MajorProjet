@@ -6,6 +6,8 @@
     padding: 20px;
     margin: 5px;
     width: 250px;
+    resize: both; /* Allow resizing both horizontally and vertically */
+  overflow: auto; /* Enable scrolling if content exceeds dimensions */
   }
   
   .Contacts-container {

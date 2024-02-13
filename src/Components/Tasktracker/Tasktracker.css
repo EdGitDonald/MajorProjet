@@ -8,6 +8,8 @@
     padding: 20px;
     width: 250px;
     margin: 5px;
+    resize: both; /* Allow resizing both horizontally and vertically */
+  overflow: auto; /* Enable scrolling if content exceeds dimensions */
 }
 
 .tasktracker-container{

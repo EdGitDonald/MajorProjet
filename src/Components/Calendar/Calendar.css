@@ -3,10 +3,11 @@
     background-color: rgba(229, 229, 229, 0.4);
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    
     Width: 500px;
     margin: 5px;
     color: #176dd8;
+    resize: both; /* Allow resizing both horizontally and vertically */
+    overflow: auto; /* Enable scrolling if content exceeds dimensions */
 
 }
 
