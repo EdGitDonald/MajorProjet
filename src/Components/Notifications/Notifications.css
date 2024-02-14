@@ -82,10 +82,6 @@
   .message-content {
     flex: 1;
   }
-
-  .Drafted-messages li button{
-    
-  }
   
   /* Red urgency style */
   .Drafted-messages .urgency-box.urgent-red {
