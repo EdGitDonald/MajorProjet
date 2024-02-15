@@ -1,31 +1,35 @@
-
-.Calendar{
+.Calendar {
     background-color: rgba(229, 229, 229, 0.4);
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    Width: 500px;
+    /* Adjust width to accommodate dynamic resizing */
+    width: 100%;
     margin: 5px;
     color: #176dd8;
-    resize: both; /* Allow resizing both horizontally and vertically */
     overflow: auto; /* Enable scrolling if content exceeds dimensions */
-
 }
 
-.Calendar h2{
+.Calendar h2 {
     margin-left: 20px;
 }
 
-.Week-container{
+.Week-container {
     display: flex;
-    height: 200px;   
+    /* Remove fixed height to allow dynamic resizing */
+    /* height: 200px; */
 }
 
-.Day{
-    height: 100%;
-    width: 100%;
+.Day {
+    /* Adjust to allow dynamic resizing */
+    /* height: 100%; */
+    /* width: 100%; */
+    flex: 1; /* Use flex to distribute available space evenly */
+    border: 1px solid #ccc; /* Add border for better visibility */
+    padding: 10px; /* Add padding for better spacing */
 }
 
-.Week-container button{
+.Week-container button {
     width: 20px;
     height: 40px;
+    /* Adjust styles as needed */
 }

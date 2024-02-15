@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Contacts.css';
 import ContactList from '../ContactList/ContactList';
 import ContactModal from '../ContactModal/ContactModal';
 import Modal from 'react-modal';
+import { Draggable } from 'react-beautiful-dnd';
 
 function Contacts({ updateDraftedMessages }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,95 +83,104 @@ function Contacts({ updateDraftedMessages }) {
   );
 
   return (
-    <div className='Contacts'>
-      <div className='Contacts-container'>
-        <h2>Contacts</h2>
-        <div className='Search-bar'>
-          <input
-            type='text'
-            placeholder='Search contacts...'
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
+    <Draggable draggableId="contacts" index={1}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          className='Contacts'
+        >
+          <div className='Contacts-container'>
+            <h2>Contacts</h2>
+            <div className='Search-bar'>
+              <input
+                type='text'
+                placeholder='Search contacts...'
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </div>
+            <button onClick={openModal}>Add Contact</button>
+          </div>
+
+          <ContactModal
+            isOpen={isOpen}
+            closeModal={closeModal}
+            newContactName={newContactName}
+            newContactEmail={newContactEmail}
+            newContactImage={newContactImage}
+            setNewContactName={setNewContactName}
+            setNewContactEmail={setNewContactEmail}
+            setNewContactImage={setNewContactImage}
+            handleAddContact={handleAddContact}
+          />
+
+          {/* Modal for sending a new message */}
+          <Modal
+            isOpen={isMessageModalOpen}
+            onRequestClose={closeMessageModal}
+            style={{
+              overlay: {
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              },
+              content: {
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                maxWidth: '300px',
+                margin: 'auto',
+              },
+            }}
+          >
+            <div>
+              <button className='modal-close-btn' onClick={closeMessageModal}>
+                Close
+              </button>
+
+              {/* Form for sending a new message */}
+              <form>
+                <div>
+                  <h2>Send Message</h2>
+                  <textarea
+                    name='message'
+                    value={draftedMessage}
+                    onChange={(e) => setDraftedMessage(e.target.value)}
+                    placeholder='Type your message...'
+                  />
+                  <div>
+                    <label htmlFor='urgency'>Select Urgency:</label>
+                    <select
+                      id='urgency'
+                      value={selectedUrgency}
+                      onChange={(e) => setSelectedUrgency(e.target.value)}
+                    >
+                      <option value='red'>Red</option>
+                      <option value='yellow'>Yellow</option>
+                      <option value='green'>Green</option>
+                    </select>
+                  </div>
+                </div>
+                <button type='button' onClick={handleSendMessage}>
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </Modal>
+          {/* Display the list of contacts */}
+          <ContactList
+            contacts={filteredContacts}
+            openMessageModal={openMessageModal}
+            handleRemoveContact={handleRemoveContact}
           />
         </div>
-        <button onClick={openModal}>Add Contact</button>
-      </div>
-
-      <ContactModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        newContactName={newContactName}
-        newContactEmail={newContactEmail}
-        newContactImage={newContactImage}
-        setNewContactName={setNewContactName}
-        setNewContactEmail={setNewContactEmail}
-        setNewContactImage={setNewContactImage}
-        handleAddContact={handleAddContact}
-      />
-
-      {/* Modal for sending a new message */}
-      <Modal
-        isOpen={isMessageModalOpen}
-        onRequestClose={closeMessageModal}
-        style={{
-          overlay: {
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          },
-          content: {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            maxWidth: '300px',
-            margin: 'auto',
-          },
-        }}
-      >
-        <div>
-          <button className='modal-close-btn' onClick={closeMessageModal}>
-            Close
-          </button>
-
-          {/* Form for sending a new message */}
-          <form>
-          <div>
-  <h2>Send Message</h2>
-  <textarea
-    name='message'
-    value={draftedMessage}
-    onChange={(e) => setDraftedMessage(e.target.value)}
-    placeholder='Type your message...'
-  />
-        <div>
-            <label htmlFor='urgency'>Select Urgency:</label>
-               <select
-                  id='urgency'
-                  value={selectedUrgency}
-                  onChange={(e) => setSelectedUrgency(e.target.value)}
-                  >
-                  <option value='red'>Red</option>
-                  <option value='yellow'>Yellow</option>
-                  <option value='green'>Green</option>
-                </select>
-              </div>
-            </div>
-            <button type='button' onClick={handleSendMessage}>
-              Send Message
-            </button>
-          </form>
-        </div>
-      </Modal>
-      {/* Display the list of contacts */}
-      <ContactList
-        contacts={filteredContacts}
-        openMessageModal={openMessageModal}
-        handleRemoveContact={handleRemoveContact}
-      />
-    </div>
+      )}
+    </Draggable>
   );
 }
 

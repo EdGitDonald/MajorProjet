@@ -1,32 +1,31 @@
-
 .Contacts {
     background-color: rgba(229, 229, 229, 0.4);
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 5px;
-    width: 250px;
-    resize: both; /* Allow resizing both horizontally and vertically */
-  overflow: auto; /* Enable scrolling if content exceeds dimensions */
-  }
-  
-  .Contacts-container {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-x: auto;  /* Add this line to enable horizontal scrolling */
-    max-width: 100%;   /* Set maximum width as 100% */
-  }
-  
-  .Contacts-list {
+    /* Remove fixed width */
+    /* width: 250px; */
+    overflow: auto; /* Enable scrolling if content exceeds dimensions */
+}
 
-    align-items: center;
-    width: 150px;
-    flex-wrap: wrap;
-    white-space: nowrap;  /* Add this line to keep contacts in a single row */
-    overflow-x: auto;  /* Add this line to enable horizontal scrolling */
+.Contacts-container {
     display: flex;
-  }
-  
-  .Search-bar {
+    flex-wrap: wrap;
+    overflow-x: auto; /* Add this line to enable horizontal scrolling */
+    max-width: 100%; /* Set maximum width as 100% */
+}
+
+.Contacts-list {
+    align-items: center;
+    /* Remove fixed width */
+    /* width: 150px; */
+    flex-wrap: wrap;
+    white-space: nowrap; /* Remove this line to allow wrapping */
+    overflow-x: auto; /* Add this line to enable horizontal scrolling */
+    display: flex;
+}
+
+.Search-bar {
     margin-bottom: 10px;
-  }
+}

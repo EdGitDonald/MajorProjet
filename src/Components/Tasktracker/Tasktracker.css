@@ -1,32 +1,31 @@
-/* Add the following styles to your existing CSS */
-
-
-.tasktracker{
+.tasktracker {
     background-color: rgba(229, 229, 229, 0.4);
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 250px;
+    /* Remove fixed width and height */
+    /* width: 250px; */
+    /* height: 90%; */
     margin: 5px;
-    resize: both; /* Allow resizing both horizontally and vertically */
-  overflow: auto; /* Enable scrolling if content exceeds dimensions */
+    overflow: auto; /* Enable scrolling if content exceeds dimensions */
 }
 
-.tasktracker-container{
+.tasktracker-container {
     display: flex;
     margin: 5px;
     justify-content: center;
 }
 
-.tasktracker-container h2{
+.tasktracker-container h2 {
     margin-right: 5px;
 }
 
-.tasktracker-task{
-    
-    height: 90%;
-    overflow: scroll;
+.tasktracker-task {
+    /* Remove fixed height */
+    /* height: 90%; */
+    overflow: auto; /* Enable scrolling if content exceeds dimensions */
 }
+
 
 
   
