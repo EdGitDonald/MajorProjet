@@ -3,7 +3,6 @@ import { startOfWeek, addDays, subWeeks, addWeeks, format as formatDateFns } fro
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import './Calendar.css';
-import { Draggable } from 'react-beautiful-dnd';
 
 // Function to format the due date based on different formats
 const formatDate = (dueDate, format) => {
@@ -33,58 +32,48 @@ const formatDate = (dueDate, format) => {
 };
 
 const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDate }) => {
-  const [currentWeek, setCurrentWeek] = useState(new Date());
-
-  const weekStart = startOfWeek(currentWeek, { weekStartsOn: 1 });
-  const days = Array.from({ length: 5 }, (_, index) => addDays(weekStart, index));
-
-  const goToPreviousWeek = () => {
-    setCurrentWeek(subWeeks(currentWeek, 1));
-  };
-
-  const goToNextWeek = () => {
-    setCurrentWeek(addWeeks(currentWeek, 1));
-  };
-
-  return (
-    <Draggable draggableId="calendar" index={1}>
-      {(provided) => (
-        <div
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          className='Calendar'
-        >
-          <h2>Calendar</h2>
-          <div className='Week-container'>
-            <button onClick={goToPreviousWeek}><FaAngleLeft/></button>
-            {days.map((day, index) => {
-              const formattedDate = formatDate(day, 'yyyy-MM-dd');
-              const taskTitles = taskTitlesByDate[formattedDate] || [];
-              const isSelected = selectedDueDate && formatDateFns(selectedDueDate, 'yyyy-MM-dd') === formattedDate;
-
-              return (
-                <div
-                  className={`Day ${isSelected ? 'selected' : ''}`}
-                  key={index}
-                  onClick={() => onDateSelect(day, selectedDueDate, newTaskTitle, taskTitles)}
-                >
-                  <p>{formatDateFns(day, 'EEEE')}</p>
-                  <p>{formatDateFns(day, 'd')}</p>
-                  {taskTitles.map((taskTitle, taskIndex) => (
-                    <span key={taskIndex}>{taskTitle}</span>
-                  ))}
-                  {isSelected && newTaskTitle && !taskTitles.includes(newTaskTitle) && <span>{newTaskTitle}</span>}
-                </div>
-              );
-            })}
-            <button onClick={goToNextWeek}><FaAngleRight/></button>
-          </div>
+    const [currentWeek, setCurrentWeek] = useState(new Date());
+  
+    const weekStart = startOfWeek(currentWeek, { weekStartsOn: 1 });
+    const days = Array.from({ length: 5 }, (_, index) => addDays(weekStart, index));
+  
+    const goToPreviousWeek = () => {
+      setCurrentWeek(subWeeks(currentWeek, 1));
+    };
+  
+    const goToNextWeek = () => {
+      setCurrentWeek(addWeeks(currentWeek, 1));
+    };
+  
+    return (
+      <div className='Calendar'>
+        <h2>Calendar</h2>
+        <div className='Week-container'>
+          <button onClick={goToPreviousWeek}><FaAngleLeft/></button>
+          {days.map((day, index) => {
+            const formattedDate = formatDate(day, 'yyyy-MM-dd');
+            const taskTitles = taskTitlesByDate[formattedDate] || [];
+            const isSelected = selectedDueDate && formatDateFns(selectedDueDate, 'yyyy-MM-dd') === formattedDate;
+  
+            return (
+              <div
+                className={`Day ${isSelected ? 'selected' : ''}`}
+                key={index}
+                onClick={() => onDateSelect(day, selectedDueDate, newTaskTitle, taskTitles)}
+              >
+                <p>{formatDateFns(day, 'EEEE')}</p>
+                <p>{formatDateFns(day, 'd')}</p>
+                {taskTitles.map((taskTitle, taskIndex) => (
+                  <span key={taskIndex}>{taskTitle}</span>
+                ))}
+                {isSelected && newTaskTitle && !taskTitles.includes(newTaskTitle) && <span>{newTaskTitle}</span>}
+              </div>
+            );
+          })}
+          <button onClick={goToNextWeek}><FaAngleRight/></button>
         </div>
-      )}
-    </Draggable>
-  );
-};
-
-export default Calendar;
-
+      </div>
+    );
+  };
+  
+  export default Calendar;
