@@ -1,10 +1,14 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
     <div className='Header'>
-        <p>InFlow</p>
+        <Link to='/'>
+        <p>FlowHome</p>
+        </Link>
+        
         <nav>
             <p>Sign In</p>
     

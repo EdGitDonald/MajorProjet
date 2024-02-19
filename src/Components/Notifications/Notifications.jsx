@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { TiDelete } from "react-icons/ti";
+import { useNavigate } from 'react-router-dom';
 import './Notifications.css';
 
 function Notifications({ draftedMessages, removeNotification, urgencyFilter, handleUrgencyFilterChange }) {
   const notificationsRef = useRef(null);
+  const navigate = useNavigate()
   
 
   const handleFlagClick = (urgency) => {
@@ -48,7 +50,7 @@ function Notifications({ draftedMessages, removeNotification, urgencyFilter, han
   
 
   return (
-    <div className='Notifications' >
+    <div className='Notifications' onClick={() => {navigate('/NotificationCentre')}} >
       <div className='Notifications-container'>
         <h2>Notifications</h2>
         

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Homepage.css';
 import Header from '../../Components/Header/Header';
 import Tasktracker from '../../Components/Tasktracker/Tasktracker';
@@ -7,6 +8,7 @@ import Calendar from '../../Components/Calendar/Calendar';
 import Contacts from '../../Components/Contacts/Contacts';
 import Emails from '../../Components/Emails/Emails';
 import TeamChat from '../../Components/TeamChat/TeamChat';
+
 
 function Homepage() {
   const [draftedMessages, setDraftedMessages] = useState([]);
@@ -54,7 +56,6 @@ function Homepage() {
 
   return (
     <div className='Homepage-container'>
-        <Header />
        <div className='Homepage-display'>
         <div className='Homepage-left'>
         <Tasktracker
