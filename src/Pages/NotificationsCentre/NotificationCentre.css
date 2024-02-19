@@ -1,0 +1,22 @@
+.NotificationCentre {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: row; /* Stack items vertically */
+     /* Center items horizontally */
+}
+
+.Table-container {
+    width: 66%;
+    overflow-x: auto;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Add horizontal scrolling if needed */
+}
+
+
+.Organiser-container th,
+.Organiser-container td {
+    padding: 8px;
+    text-align: center;
+}

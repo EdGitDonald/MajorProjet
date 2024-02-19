@@ -8,13 +8,16 @@ import Header from './Components/Header/Header'
 
 
 function App() {
+  const [draftedMessages, setDraftedMessages] = useState([]);
+
+
   return (
 
     <BrowserRouter>
        <Header />
      <Routes>
-       <Route path='/' element={<Homepage/>}/>
-       <Route path='/NotificationCentre' element={<NotificationCentre/>}/>
+       <Route path='/' element={<Homepage draftedMessages={draftedMessages} setDraftedMessages={setDraftedMessages} />}/>
+       <Route path='/NotificationCentre' element={<NotificationCentre draftedMessages={draftedMessages}/>}/>
      </Routes>
     </BrowserRouter>
    
