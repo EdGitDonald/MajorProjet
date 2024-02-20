@@ -11,12 +11,23 @@
     border: 1px solid red;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Add horizontal scrolling if needed */
+    justify-content: space-around; /* Add horizontal scrolling if needed */
 }
 
+.Table-container td {
+     /* Align the content in the center of the cells */
+  }
 
-.Organiser-container th,
-.Organiser-container td {
-    padding: 8px;
-    text-align: center;
+.Table-container th:not(:first-child),
+.Table-container td:not(:first-child) {
+  border-left: 1px solid #dddddd; /* Add border to the left of each cell except the first one */
+}
+
+.message-widget{
+    background-color: rgba(229, 229, 229, 0.4);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 66%;
+    
 }

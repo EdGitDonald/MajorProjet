@@ -17,6 +17,7 @@ function Homepage({ draftedMessages, setDraftedMessages }) {
   const [taskTitlesByDate, setTaskTitlesByDate] = useState({});
   const [urgencyFilter, setUrgencyFilter] = useState(null);
 
+
   // Function to handle urgency filter change
   const handleUrgencyFilterChange = (urgency) => {
     setUrgencyFilter(urgency);

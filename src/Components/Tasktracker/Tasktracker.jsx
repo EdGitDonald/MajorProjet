@@ -3,6 +3,7 @@ import './Tasktracker.css';
 import Modal from 'react-modal';
 import SingleTask from '../SingleTask/SingleTask';
 import { MdAddTask } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 
 function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
@@ -14,6 +15,8 @@ function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState(0);
   const [selectedDueDate, setSelectedDueDate] = useState('');
+
+  const navigate = useNavigate()
 
   const openModal = () => {
     setIsOpen(true);
@@ -65,6 +68,7 @@ function Tasktracker({ onDueDateSelect, taskTitlesByDate }) {
     <div className='tasktracker'>
       <div className='tasktracker-container'>
         <h2>Tasktracker</h2>
+        <p onClick={() => {navigate('/TaskManager')}}>Task Page</p>
         <button onClick={openModal}><MdAddTask /></button>
       </div>
 

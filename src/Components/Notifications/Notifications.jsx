@@ -5,6 +5,7 @@ import './Notifications.css';
 
 function Notifications({ draftedMessages, removeNotification, urgencyFilter, handleUrgencyFilterChange }) {
   const notificationsRef = useRef(null);
+  
   const navigate = useNavigate()
   
 
