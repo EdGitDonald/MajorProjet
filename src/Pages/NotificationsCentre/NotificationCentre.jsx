@@ -18,10 +18,17 @@ function NotificationCentre({ draftedMessages }) {
               <th>Urgency</th>
             </tr>
             <tr>
-              <th>Red</th>
-              <th>Yellow</th>
-              <th>Green</th>
-            </tr>  
+                <th>Critical
+                <div className='urgency-red'></div>
+                </th>
+                <th>Essential
+                <div className='urgency-yellow'></div>
+                </th>
+                <th>Non-Essential
+                <div className='urgency-green'></div>
+                </th>
+                
+          </tr>  
           </thead>
           <tbody>
             <tr>

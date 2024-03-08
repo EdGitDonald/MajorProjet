@@ -5,6 +5,30 @@
      /* Center items horizontally */
 }
 
+.urgency-red{
+  background-color: #b21f1a;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.urgency-yellow{
+  background-color: #ecd100;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.urgency-green{
+  background-color: #008f00;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
 .Table-container {
     width: 66%;
     overflow-x: auto;
