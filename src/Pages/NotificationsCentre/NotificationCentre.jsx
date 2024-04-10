@@ -19,7 +19,7 @@ function NotificationCentre({ draftedMessages }) {
             </tr>
             <tr>
                 <th>Critical
-                <div className='urgency-red'></div>
+                  <div className='urgency-red'></div>
                 </th>
                 <th>Essential
                 <div className='urgency-yellow'></div>

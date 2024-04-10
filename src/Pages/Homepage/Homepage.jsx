@@ -58,6 +58,15 @@ function Homepage({ draftedMessages, setDraftedMessages }) {
     <div className='Homepage-container'>
        <div className='Homepage-display'>
         <div className='Homepage-left'>
+       
+        <Calendar
+          selectedDueDate={selectedDueDate}
+          onDateSelect={onDateSelect}
+          newTaskTitle={newTaskTitle}
+          taskTitlesByDate={taskTitlesByDate}
+        />
+        </div>
+        <div className='Homepage-right'>
         <Tasktracker
           onDueDateSelect={(date, title, task) => {
             setSelectedDueDate(date);
@@ -69,19 +78,8 @@ function Homepage({ draftedMessages, setDraftedMessages }) {
             }));
           }}
         />
-        <Calendar
-          selectedDueDate={selectedDueDate}
-          onDateSelect={onDateSelect}
-          newTaskTitle={newTaskTitle}
-          taskTitlesByDate={taskTitlesByDate}
-        />
-        </div>
-        <div className='Homepage-right'>
         <Notifications draftedMessages={draftedMessages} removeNotification={removeNotification} urgencyFilter={urgencyFilter} handleUrgencyFilterChange={handleUrgencyFilterChange} />
-        <Contacts draftedMessages={draftedMessages} updateDraftedMessages={updateDraftedMessages} />
-        <Emails/>
-        <TeamChat />
-        
+        <Contacts draftedMessages={draftedMessages} updateDraftedMessages={updateDraftedMessages} /> 
         </div>
       </div>
     </div>

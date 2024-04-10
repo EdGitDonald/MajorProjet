@@ -3,10 +3,11 @@
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     /* Adjust width to accommodate dynamic resizing */
-    width: 100%;
+    width: 95%;
+    
     margin: 5px;
-    color: #176dd8;
     overflow: auto; /* Enable scrolling if content exceeds dimensions */
+    border: 1px solid red;
 }
 
 .Calendar h2 {
@@ -15,6 +16,7 @@
 
 .Week-container {
     display: flex;
+    flex-direction: column;
     /* Remove fixed height to allow dynamic resizing */
     /* height: 200px; */
 }

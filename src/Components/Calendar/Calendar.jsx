@@ -71,8 +71,15 @@ const Calendar = ({ selectedDueDate, onDateSelect, newTaskTitle, taskTitlesByDat
             );
           })}
           <button onClick={goToNextWeek}><FaAngleRight/></button>
+          <div className='meeting-container'>
+          <p>Set Meeting</p>
+          <button>+</button>
+          
+
+        </div>
         </div>
       </div>
+      
     );
   };
   

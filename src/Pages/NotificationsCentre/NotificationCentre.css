@@ -38,10 +38,6 @@
     justify-content: space-around; /* Add horizontal scrolling if needed */
 }
 
-.Table-container td {
-     /* Align the content in the center of the cells */
-  }
-
 .Table-container th:not(:first-child),
 .Table-container td:not(:first-child) {
   border-left: 1px solid #dddddd; /* Add border to the left of each cell except the first one */

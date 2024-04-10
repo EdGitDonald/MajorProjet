@@ -17,11 +17,12 @@
  display: flex;
  flex-direction: column;
  width: 33%;
+ border: 1px blue solid;
 }
 
 .Homepage-right{
     display: flex;
-    flex-direction: column;
+   
     flex-wrap: wrap;
     gap: 10px;
     padding-left: 50px;

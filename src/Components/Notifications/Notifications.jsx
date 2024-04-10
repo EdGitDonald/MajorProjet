@@ -51,21 +51,28 @@ function Notifications({ draftedMessages, removeNotification, urgencyFilter, han
   
 
   return (
-    <div className='Notifications' onClick={() => {navigate('/NotificationCentre')}} >
+    <div className='Notifications'>
       <div className='Notifications-container'>
         <h2>Notifications</h2>
+        <p onClick={() => {navigate('/NotificationCentre')}}>Expand</p>
         
         <nav className='Flag-container'>
-          <p onClick={() => handleUrgencyFilterChange(null)}>ALL</p>
+         {/* <p onClick={() => handleUrgencyFilterChange(null)}>ALL</p> */}
+          
           <p onClick={() => handleUrgencyFilterChange('red')}>RED</p>
+          <div className='urgency-red'></div>
+          
           <p onClick={() => handleUrgencyFilterChange('yellow')}>YELLOW</p>
+          <div className='urgency-yellow'></div>
+          
           <p onClick={() => handleUrgencyFilterChange('green')}>GREEN</p>
+          <div className='urgency-green'></div>
         </nav>
       </div>
 
       {/* Display the drafted messages */}
       <div className='Drafted-messages'>
-        <h3>Drafted Messages</h3>
+      
         <ul>
           {draftedMessages
             .filter((message) => !urgencyFilter || message.urgency === urgencyFilter)
